@@ -1,0 +1,6 @@
+# TID item:quantity ...
+T0 a:10 b:1 c:3 d:2 e:5
+T1 b:2 c:1 d:5 e:2
+T2 a:5 c:3 d:2
+T3 b:6 d:6 e:4
+T4 c:7 d:4 e:2

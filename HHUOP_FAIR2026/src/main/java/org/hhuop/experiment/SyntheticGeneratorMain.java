@@ -1,0 +1,6 @@
+package org.hhuop.experiment;
+
+import java.nio.file.*;import java.util.*;
+public final class SyntheticGeneratorMain{
+ public static void main(String[]argv)throws Exception{Args a=new Args(argv);int n=a.getInt("transactions",500),m=a.getInt("items",25),avg=a.getInt("avgLen",5),maxQ=a.getInt("maxQty",10),maxP=a.getInt("maxProfit",20);long seed=a.getLong("seed",42);Path dir=Path.of(a.get("outDir","datasets/synthetic"));Files.createDirectories(dir);Random r=new Random(seed);List<String> profits=new ArrayList<>();double[]p=new double[m];for(int i=0;i<m;i++){p[i]=1+r.nextInt(maxP);profits.add("i"+i+" "+(int)p[i]);}Files.write(dir.resolve("profits.txt"),profits);List<String>db=new ArrayList<>();for(int t=0;t<n;t++){int len=Math.max(1,Math.min(m,(int)Math.round(avg+r.nextGaussian()*Math.max(1,avg/3.0))));List<Integer>ids=new ArrayList<>();for(int i=0;i<m;i++)ids.add(i);Collections.shuffle(ids,r);ids=ids.subList(0,len);Collections.sort(ids);StringBuilder sb=new StringBuilder("T"+t);for(int id:ids)sb.append(' ').append("i").append(id).append(':').append(1+r.nextInt(maxQ));db.add(sb.toString());}Files.write(dir.resolve("database.txt"),db);System.out.println("Generated "+n+" transactions at "+dir.toAbsolutePath());}
+}

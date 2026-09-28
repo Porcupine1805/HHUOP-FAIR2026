@@ -1,0 +1,12 @@
+HHUOP_FAIR2026/build/
+HHUOP_FAIR2026/results/
+HHUOP_FAIR2026/datasets/realizations/
+HHUOP_FAIR2026/datasets/chess/
+HHUOP_FAIR2026/datasets/mushroom/
+HHUOP_FAIR2026/datasets/retail/
+HHUOP_FAIR2026/datasets/foodmart/
+hs_err_pid*.log
+replay_pid*.log
+*.zip
+*.docx
+review.txt
